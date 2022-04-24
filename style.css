@@ -3,7 +3,7 @@ body{
     background: url(film3.jpg);
     margin: 0;
     flex-wrap: wrap;
-    font-family: 'Roboto light';
+    font-family: 'Roboto';
     align-items: center;
     width:100%;
 }
@@ -107,6 +107,6 @@ select.search-bar{
     background: rgb(221, 217, 217);
     height: 32px;
     font-size: 18px;
-    font-family: 'Roboto light';
+    font-family: 'Roboto';
     min-width: 300px;
 }
