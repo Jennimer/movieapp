@@ -43,11 +43,11 @@ function loadInfo() {
             var date = new Date();
             var today = date.toLocaleDateString();
             var tomorrow = date.toLocaleDateString(date.setDate(date.getDate() + 1));// Dates of this week
-            var third = date.toLocaleDateString(date.setDate(date.getDate() + 2));
-            var fourth = date.toLocaleDateString(date.setDate(date.getDate() + 3));
-            var fifth = date.toLocaleDateString(date.setDate(date.getDate() + 4));
-            var sixth = date.toLocaleDateString(date.setDate(date.getDate() + 5));
-            var seventh = date.toLocaleDateString(date.setDate(date.getDate() + 6));
+            var third = date.toLocaleDateString(date.setDate(date.getDate() + 1));
+            var fourth = date.toLocaleDateString(date.setDate(date.getDate() + 1));
+            var fifth = date.toLocaleDateString(date.setDate(date.getDate() + 1));
+            var sixth = date.toLocaleDateString(date.setDate(date.getDate() + 1));
+            var seventh = date.toLocaleDateString(date.setDate(date.getDate() + 1));
             var menu = "";
             menu += `<option> Tänään  ${today} </option>"` // dates dropdown
             menu += `<option> Huomenna  ${tomorrow} </option>"`
@@ -80,7 +80,7 @@ function movieId() {
     document.querySelector(".place").innerText = place;
     for (let i = 0; i < array.length; i++) {
         if (place === array[i].theat) {
-            var theatherId = array[i].tid; //We look for the right movie id
+            var theatherId = array[i].tid; //We check the right movie id
             if (theatherId === "1029") {
                 return;
             }
