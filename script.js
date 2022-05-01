@@ -103,7 +103,7 @@ function movieId() {
                 console.log(date);
             }
             
-                if(date[0] != 0){
+                if(date[1] == "."){
                 date = 0 + date}
                 if(date.lenght = 9){
                     date = date.slice(0,3)+ "0"+date.slice(3,9);
