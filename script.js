@@ -1,14 +1,14 @@
 let addButton = document.querySelector("#sbutton");
 let array = []; //array for checking movie id
 
-function loadAndDisplayTheaterList() {
+function loadInfo() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open("GET", "https://www.finnkino.fi/xml/TheatreAreas/", true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function () {
         // If we are still loading...
         if (xmlhttp.readyState === 1) {
-            document.getElementById("myDiv").innerHTML = "Wait while Im loading...";
+            document.getElementById("myDiv").innerHTML = "Loading";
         }
         // If everything is ok
         if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -19,53 +19,86 @@ function loadAndDisplayTheaterList() {
             //  document.getElementById("myDiv").innerHTML = txt;
             var xmlDoc = xmlhttp.responseXML;
             // finding some tags from our variable containing XML
+            console.log(xmlDoc);
+
+
 
             var theather = xmlDoc.getElementsByTagName("Name");
             var id = xmlDoc.getElementsByTagName("ID");
-            
+
             var txt = "";
 
             for (let i = 0; i < theather.length; i++) {
                 var theat = theather[i].childNodes[0].nodeValue
                 var tid = id[i].childNodes[0].nodeValue
                 txt += "<option>" + theat + "</option>" //dropdown menu list is greated
-                array.push({ theat: theat, tid: tid }); //and array
+                array.push({ theat: theat, tid: tid }); //and push it in the array
 
             }
             document.getElementById("area").innerHTML = txt; // we insert theather list in the dropdown
             //console.log(array);
+
+
+
+            var date = new Date();
+            var today = date.toLocaleDateString();
+            var tomorrow = date.toLocaleDateString(date.setDate(date.getDate() + 1));// Dates of this week
+            var third = date.toLocaleDateString(date.setDate(date.getDate() + 2));
+            var fourth = date.toLocaleDateString(date.setDate(date.getDate() + 3));
+            var fifth = date.toLocaleDateString(date.setDate(date.getDate() + 4));
+            var sixth = date.toLocaleDateString(date.setDate(date.getDate() + 5));
+            var seventh = date.toLocaleDateString(date.setDate(date.getDate() + 6));
+            var menu = "";
+            menu += `<option> Tänään  ${today} </option>"` // dates dropdown
+            menu += `<option> Huomenna  ${tomorrow} </option>"`
+            menu += `<option>  ${third} </option>"`
+            menu += `<option>  ${fourth} </option>"`
+            menu += `<option>  ${fifth} </option>"`
+            menu += `<option>  ${sixth} </option>"`
+            menu += `<option>  ${seventh} </option>"`
+
+            document.getElementById("day").innerHTML = menu;
+            //console.log(today)
+
         }
+
     }
 }
+
+
+
+
+
+
+
+
+
 function movieId() {
 
     var place = document.querySelector("#area").value;
+
     document.querySelector(".place").innerText = place;
     for (let i = 0; i < array.length; i++) {
         if (place === array[i].theat) {
             var theatherId = array[i].tid; //We look for the right movie id
-            if (theatherId === "1029"){
-                
-                return;}
+            if (theatherId === "1029") {
+                return;
+            }
             console.log(theatherId);
             loadMovieInfo(theatherId);
             return;
         }
-
     }
 
 
+
     function loadMovieInfo() {
-        var date = new Date();
-        var month = date.getMonth() // Getting date for the request and firming it for right form
-        if (month.length = 1) {
-            month = "0" + month; 
-        }
-        var today = date.getDate() + "." + month + "." + date.getFullYear();
-        //console.log(today)
+        console.log("kissa");
+        var date = document.querySelector("#day").value;
+        console.log(date);
 
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=" + theatherId + "&=" + today, true);
+        xmlhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=" + theatherId + "&=" + date, true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function () { //request and searching a movies 
             // If we are still loading...
@@ -74,7 +107,7 @@ function movieId() {
             }
             // If everything is ok
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
- 
+
                 var xmlDoc = xmlhttp.responseXML;
                 //console.log(xmlDoc);
                 // We find some tags from our variable containing XML
@@ -84,18 +117,19 @@ function movieId() {
                 var movie = xmlDoc.getElementsByTagName("Title");
                 var times = xmlDoc.getElementsByTagName("dttmShowStart");
                 var language = xmlDoc.getElementsByTagName("PresentationMethodAndLanguage");
-                for (let i = 0; i < movie.length; i++) { // Greating movie info div
+                for (let i = 0; i < movie.length; i++) { // We create movie info text 
 
                     list += `<div class="movieInfo"> `
                     list += `<div class="picture"><img src= ${image[i].childNodes[0].nodeValue} alt="movie image"></div>`
                     list += `<div class="movieInfoText">`
                     list += `<div class="room"> ${room[i].childNodes[0].nodeValue} </div>`
                     list += `<div class="movien"> ${movie[i].childNodes[0].nodeValue} </div>`
-                    list += `<div class="times"> ${times[i].childNodes[0].nodeValue.slice(11,16)} </div>`
+                    list += `<div class="times"> ${times[i].childNodes[0].nodeValue.slice(11, 16)} </div>`
                     list += `<div class="language"> ${language[i].childNodes[0].nodeValue} </div>`
                     list += `</div></div> `
 
                     document.getElementById("movies").innerHTML = list; // and put it in the div
+
                 }
 
 
@@ -106,8 +140,8 @@ function movieId() {
     }
 }
 
-loadAndDisplayTheaterList(); //We Call the function which load the theatherlist
-addButton.addEventListener("click", movieId); 
+loadInfo(); //We Call the function which load the theatherlist
+addButton.addEventListener("click", movieId);
 
 
 
