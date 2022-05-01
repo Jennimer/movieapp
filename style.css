@@ -110,3 +110,15 @@ select.search-bar{
     font-family: 'Roboto';
     min-width: 300px;
 }
+select.search-day{
+    border: none;
+    outline: none;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-right: 10px;
+    background: rgb(221, 217, 217);
+    height: 32px;
+    font-size: 18px;
+    font-family: 'Roboto';
+    min-width: 250px;
+}
