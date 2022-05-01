@@ -93,9 +93,23 @@ function movieId() {
 
 
     function loadMovieInfo() {
-        console.log("kissa");
+        
         var date = document.querySelector("#day").value;
-        console.log(date);
+                var date = document.querySelector("#day").value;
+        console.log(date[0]);
+            if(date[0]=== "T" || date[0]=== "H"){
+                dateArray = date.split(" ");
+                date = dateArray[1];
+                console.log(date);
+            }
+            
+                if(date[0] != 0){
+                date = 0 + date}
+                if(date.lenght = 9){
+                    date = date.slice(0,3)+ "0"+date.slice(3,9);
+                
+                console.log(date);
+            }
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=" + theatherId + "&=" + date, true);
