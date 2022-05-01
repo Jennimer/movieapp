@@ -67,15 +67,9 @@ function loadInfo() {
 
 
 
-
-
-
-
-
-
 function movieSearch() {
 
-
+ console.log("hakee")
     var place = document.querySelector("#area").value;
 
     document.querySelector(".place").innerText = place;
@@ -95,7 +89,7 @@ function movieSearch() {
 
 
     function loadMovieInfo() {
-
+        console.log("uusipäivä");
         var date = document.querySelector("#day").value;
 
         console.log(date[0]);
@@ -115,7 +109,7 @@ function movieSearch() {
         }
 
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=" + theatherId + "&=" + date, true);
+        xmlhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=" + theatherId + "&dt=" + date, true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function () { //request and searching a movies 
             // If we are still loading...
