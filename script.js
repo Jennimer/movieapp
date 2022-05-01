@@ -90,7 +90,7 @@ function movieId() {
         }
     }
 
-
+}
 
     function loadMovieInfo() {
         
@@ -152,7 +152,7 @@ function movieId() {
 
         }
     }
-}
+
 
 loadInfo(); //We Call the function which load the theatherlist
 addButton.addEventListener("click", movieId);
