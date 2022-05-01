@@ -73,7 +73,8 @@ function loadInfo() {
 
 
 
-function movieId() {
+function movieSearch() {
+
 
     var place = document.querySelector("#area").value;
 
@@ -90,26 +91,28 @@ function movieId() {
         }
     }
 
-}
+
+
 
     function loadMovieInfo() {
-        
+
         var date = document.querySelector("#day").value;
-                var date = document.querySelector("#day").value;
+
         console.log(date[0]);
-            if(date[0]=== "T" || date[0]=== "H"){
-                dateArray = date.split(" ");
-                date = dateArray[1];
-                console.log(date);
-            }
-            
-                if(date[1] == "."){
-                date = 0 + date}
-                if(date.lenght = 9){
-                    date = date.slice(0,3)+ "0"+date.slice(3,9);
-                
-                console.log(date);
-            }
+        if (date[0] === "T" || date[0] === "H") {
+            dateArray = date.split(" ");
+            date = dateArray[1];
+            console.log(date);
+        }
+
+        if (date[1] == ".") {
+            date = 0 + date
+        }
+        if (date.lenght = 9) {
+            date = date.slice(0, 3) + "0" + date.slice(3, 9);
+
+            console.log(date);
+        }
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=" + theatherId + "&=" + date, true);
@@ -143,19 +146,19 @@ function movieId() {
                     list += `</div></div> `
 
                     document.getElementById("movies").innerHTML = list; // and put it in the div
-
                 }
-
-
             }
-
-
         }
+
     }
+
+}
+
 
 
 loadInfo(); //We Call the function which load the theatherlist
-addButton.addEventListener("click", movieId);
+addButton.addEventListener("click", movieSearch);
+
 
 
 
