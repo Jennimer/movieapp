@@ -69,8 +69,8 @@ function loadInfo() {
 
 function movieSearch() {
 
- console.log("hakee")
-    var place = document.querySelector("#area").value;
+
+    var place = document.querySelector("#area").value; //saving the value of area searchbox in the variable
 
     document.querySelector(".place").innerText = place;
     for (let i = 0; i < array.length; i++) {
@@ -89,14 +89,14 @@ function movieSearch() {
 
 
     function loadMovieInfo() {
-        console.log("uusipäivä");
-        var date = document.querySelector("#day").value;
+        showtime
+        var date = document.querySelector("#day").value; // We save value of the selected day in the variable
 
-        console.log(date[0]);
-        if (date[0] === "T" || date[0] === "H") {
+       // console.log(date[0]);
+        if (date[0] === "T" || date[0] === "H") { // we change date to the right form for the request
             dateArray = date.split(" ");
             date = dateArray[1];
-            console.log(date);
+            //console.log(date); 
         }
 
         if (date[1] == ".") {
