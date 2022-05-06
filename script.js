@@ -89,11 +89,11 @@ function movieSearch() {
 
 
     function loadMovieInfo() {
-        showtime
+        
         var date = document.querySelector("#day").value; // We save value of the selected day in the variable
 
-       // console.log(date[0]);
-        if (date[0] === "T" || date[0] === "H") { // we change date to the right form for the request
+       // console.log(date[0]); // we change date to the right form for the request
+        if (date[0] === "T" || date[0] === "H") { 
             dateArray = date.split(" ");
             date = dateArray[1];
             //console.log(date); 
