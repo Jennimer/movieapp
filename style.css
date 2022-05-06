@@ -94,7 +94,8 @@ button{
     margin-bottom: 5px;
     color:rgb(34, 26, 39);
     border-radius: 2px;
-
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
     font-size: 20px;
 }
 
