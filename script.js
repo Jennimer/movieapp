@@ -49,13 +49,13 @@ function loadInfo() {
             var sixth = date.toLocaleDateString(date.setDate(date.getDate() + 1));
             var seventh = date.toLocaleDateString(date.setDate(date.getDate() + 1));
             var menu = "";
-            menu += `<option> Tänään  ${today} </option>"` // dates dropdown
-            menu += `<option> Huomenna  ${tomorrow} </option>"`
-            menu += `<option>  ${third} </option>"`
-            menu += `<option>  ${fourth} </option>"`
-            menu += `<option>  ${fifth} </option>"`
-            menu += `<option>  ${sixth} </option>"`
-            menu += `<option>  ${seventh} </option>"`
+            menu += `<option>${today}</option>"` // dates dropdown
+            menu += `<option>${tomorrow}</option>"`
+            menu += `<option>${third}</option>"`
+            menu += `<option>${fourth}</option>"`
+            menu += `<option>${fifth}</option>"`
+            menu += `<option>${sixth}</option>"`
+            menu += `<option>${seventh}</option>"`
 
             document.getElementById("day").innerHTML = menu;
             //console.log(today)
@@ -90,26 +90,28 @@ function movieSearch() {
 
     function loadMovieInfo() {
         
-        var date = document.querySelector("#day").value; // We save value of the selected day in the variable
+        var date = document.querySelector("#day").value; // We save the value of a selected day in the variable
 
-       // console.log(date[0]); // we change date to the right form for the request
-        if (date[0] === "T" || date[0] === "H") { 
-            dateArray = date.split(" ");
-            date = dateArray[1];
-            //console.log(date); 
+        const dateArray = date.split(".");
+        var day = dateArray[0];
+        var month = dateArray[1];
+        var year = dateArray[2];
+
+        if (day < 10)
+        {
+            day = '0' + day;
         }
 
-        if (date[1] == ".") {
-            date = 0 + date
+        if (month < 10)
+        {
+            month = `0${month}`;
         }
-        if (date.lenght = 9) {
-            date = date.slice(0, 3) + "0" + date.slice(3, 9);
 
-            console.log(date);
-        }
+        var formattedDate = [day, month, year].join(".");
+        //console.log(formattedDate);
 
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=" + theatherId + "&dt=" + date, true);
+        xmlhttp.open("GET", "https://www.finnkino.fi/xml/Schedule/?area=" + theatherId + "&dt=" + formattedDate, true);
         xmlhttp.send();
         xmlhttp.onreadystatechange = function () { //request and searching a movies 
             // If we are still loading...
