@@ -1,109 +1,156 @@
-body{
+body {
 
     background: url(film3.jpg);
     margin: 0;
-    flex-wrap: wrap;
     font-family: 'Roboto';
-    align-items: center;
-    width:100%;
+
+    width: 100%;
 }
-.movSearch{
-    
-    color: white;
+
+.movSearch {
     display: flex;
     margin: 10px;
     max-width: 400px;
-    text-align: center;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
 }
-.MoToday{
+
+@media only screen and (max-width: 800px) {
+    .movSearch {
+        flex-direction: column;
+        margin: 10px;
+
+    }
+
+    #search {
+        margin: 10px;
+    }
+
+    .movieInfo {
+        width: 300px;
+    }
+}
+
+.MoToday {
     background-color: rgb(88, 70, 112);
     opacity: 85%;
     color: rgb(34, 26, 39);
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    
+
 }
 
-#movies{
-
-    padding: 30px;
-    width: 100%;
-    min-height: 500px;
-    min-width: 500px;
-    margin: 30px
-}
-h1{
-    
-    margin: 20px;
+h1 {
+    margin-top: 10px;
     font-size: 40px;
-    
+    margin-bottom: 0px;
 }
-.movieInfo{
+
+h2 {
+    margin-bottom: 30px;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+#movies {
+    width: 100%;
+
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.movieInfo {
     background: rgb(34, 26, 39);
     color: white;
     opacity: 85%;
     border-radius: 2px;
     padding: 20px;
-    margin: 20px;
-    margin-left: 30px;
-    display:inline-flex;
-    width: 500px;
+    margin: 20px 0 20px 20px;
+    display: inline-flex;
+    width: 40%;
+    height: 150px;
     box-shadow: 0 4px 20px 0 black;
 }
-.movieInfoText{
-    
+
+@media only screen and (max-width: 800px) {
+
+
+    .movieInfo {
+        width: 300px;
+    }
+}
+
+.movieInfoText {
     margin-left: 20px;
 }
-.logo{
-width: 5%;
-margin-top: 10px;
+
+.logo {
+    width: 10%;
+    margin-top: 10px;
 
 }
 
 
-.picture{
+.picture {
     display: inline-block;
 }
 
-.times{
+.times {
     margin-bottom: 10px;
     margin-left: 5px;
 }
-.movien{
+
+.movien {
     margin-bottom: 20px;
     margin-left: 5px;
 }
-.room{
+
+.room {
     margin-left: 5px;
     margin-bottom: 20px;
     text-transform: uppercase;
-   
+
 }
-.language{
+
+.language {
     margin-left: 5px;
 }
-button{
-    
-    background-color:rgb(88, 64, 119);
+
+button {
+
+    background-color: rgb(88, 64, 119);
     border: none;
     margin-left: 20px;
     margin-top: 0px;
     margin-bottom: 5px;
-    color:rgb(34, 26, 39);
-    border-radius: 2px;
+    color: rgb(34, 26, 39);
     cursor: pointer;
     transition: 0.2s ease-in-out;
     font-size: 20px;
 }
 
-select.search-bar{
+@media only screen and (max-width: 800px) {
+
+    button {
+        margin-top: 20px;
+    }
+}
+
+select.search-bar {
     border: none;
     outline: none;
-    padding: 2px 8px;
-    border-radius: 2px;
+    padding: 4px 15px;
+    border-radius: 3px;
     margin-right: 10px;
     background: rgb(221, 217, 217);
     height: 32px;
@@ -111,11 +158,12 @@ select.search-bar{
     font-family: 'Roboto';
     min-width: 300px;
 }
-select.search-day{
+
+select.search-day {
     border: none;
     outline: none;
-    padding: 2px 8px;
-    border-radius: 2px;
+    padding: 4px 15px;
+    border-radius: 3px;
     margin-right: 10px;
     background: rgb(221, 217, 217);
     height: 32px;
